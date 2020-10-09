@@ -1,0 +1,61 @@
+*tinymru.txt*	シンプルな Most recently used/written プラグイン
+
+Version: 1.0.0
+Author : kuuote <znmxodq1@gmail.com>
+License: NYSL
+
+==============================================================================
+CONTENTS					*tinymru-contents*
+
+OVERVIEW					|tinymru-overview|
+USAGE						|tinymru-usage|
+MAPPINGS					|tinymru-mappings|
+OPTIONS						|tinymru-options|
+
+==============================================================================
+OVERVIEW					*tinymru-overview*
+
+*tinymru.vim* は、シンプルな最近使ったファイル機能を提供するプラグインです。
+
+==============================================================================
+USAGE						*tinymru-usage*
+
+このプラグインを導入すると、アクセスしたファイルが MRU と MRW のソースに記録さ
+れるようになります。 MRW には最近書き込んだファイルが、 MRU にはそれに加えて
+最近使ったファイルが新しい順に記録されます。
+プラグインで提供されるマッピングを実行すると、記録したファイル名がフルパスで
+羅列されたバッファが開きます。通常のテキスト操作が可能な他、<CR> でファイルを
+開くこともできます。( |gf| へのショートカットです)
+
+オプションで記録パスを指定すると履歴が保存され全ての Vim インスタンス間で共有
+されるようになります。
+
+==============================================================================
+MAPPINGS					*tinymru-mappings*
+
+>
+	nmap mru <Plug>(tinymru-mru-open)
+	nmap mrw <Plug>(tinymru-mrw-open)
+<
+
+------------------------------------------------------------------------------
+OPTIONS						*tinymru-options*
+
+>
+	let g:tinymru.max = 100
+<
+記録される最大数を指定します、指定が無ければ 100 になります。
+
+>
+	let g:tinymru.mru = "/tmp/vim_mru"
+<
+MRU ソースの記録パスを指定します、指定が無ければ起動時に |v:oldfiles| を元に
+して構築されます。
+
+>
+	let g:tinymru.mrw = "~/.vim/.mrw"
+<
+MRU ソースの記録パスを指定します、指定が無ければ空になります。
+
+==============================================================================
+ vim:tw=78:ts=8:noet:ft=help:norl:
